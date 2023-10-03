@@ -17,7 +17,7 @@ module.exports = {
   src_folders: ['nightwatch/tests'],
   
   // See https://nightwatchjs.org/guide/concepts/test-globals.html
-  globals_path: '',
+  // globals_path: '',
   
   vite_dev_server: {
     start_vite: true,
@@ -29,6 +29,9 @@ module.exports = {
   test_workers: {
     enabled: true
   },
+
+  // https://nightwatchjs.org/guide/concepts/page-object-model.html
+  page_objects_path: ['nightwatch/pages'],
 
   test_settings: {
     // settings for the default test environment
