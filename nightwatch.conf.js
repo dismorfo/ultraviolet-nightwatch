@@ -31,9 +31,15 @@ module.exports = {
   },
 
   test_settings: {
+    // settings for the default test environment
     default: {
       disable_error_log: false,
-      launch_url: 'https://127.0.0.1:5000',
+      launch_url: '${UV_URL}',
+      // environment isolated global variables
+      globals: {
+        test_username: '${TEST_USER}',
+        test_password: '${TEST_PW}',
+      },
 
       screenshots: {
         enabled: false,
