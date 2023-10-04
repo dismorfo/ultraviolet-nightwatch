@@ -1,46 +1,21 @@
 describe('INVENIO-58', function() {
 
-  before(browser => browser.navigateTo('https://127.0.0.1:5000/login/'))
+  before((browser) => {
+    // login process in pages/login
+    var loginPage = browser.page.login();
+    loginPage.navigate().login();
+  })
 
-  it('Make the Select a community field required for deposits', function(browser) {
-
-    browser.waitForElementVisible('body')
-
-    // Using CSS selector
-    const usernameInput = 'input[name="email"]'
-
-    const passwordInput = 'input[name="password"]'
-
-    const loginButton = 'button[type="submit"]'
-
-    const username = 'adminUV@test.com'
-
-    const password = 'changeme'
-
-    browser.setValue(usernameInput, username)
-
-    browser.setValue(passwordInput, password)
-
-    browser.click(loginButton)
-
-    // Take a screenshot of the current browser viewpoint
-    // browser.saveScreenshot('./images/screenshot.png');
-
-    // Navigate to a different URL
-    browser.url('https://127.0.0.1:5000/uploads/new');
-
-    browser.url(function (result) {
-      browser.assert.ok(result.value.includes('community=opendata'), 'Query string includes community=opendata in the Url.')
-    })
-
-    browser.waitForElementVisible('body')
+  it('Redirects to community=opendata when navigating to the uploads/new', function(browser) {
+    var uploadPage = browser.page.upload();
+    uploadPage.navigate()
+    browser.assert.urlContains('community=opendata');
 
     // Take a screenshot of the current browser viewpoint
     // browser.saveScreenshot('./images/community.png')
+  })
 
-    const parentSelector = '#communityRequired div.page-subheader-element:nth-child(2)'    
-
-    browser.assert.textContains(parentSelector, 'NYU Open Data')
+  it("Has an asterisk next to the Communities Selection Text", function() {
 
     browser.execute(function (parentSelector) {
       const parentElement = document.querySelector(parentSelector);
