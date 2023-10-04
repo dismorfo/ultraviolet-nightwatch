@@ -1,8 +1,18 @@
 # ultraviolet-nightwatch
 
-## Install the package
+## Installation
 
-```console
+Align node versions:
+```sh
+nvm use
+```
+Activate yarn (if you haven't before)
+```sh
+corepack enable
+```
+
+Install packages for this project
+```sh
 yarn install
 ```
 
