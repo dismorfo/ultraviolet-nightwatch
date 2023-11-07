@@ -17,7 +17,7 @@ module.exports = {
   src_folders: ['nightwatch/tests'],
   
   // See https://nightwatchjs.org/guide/concepts/test-globals.html
-  globals_path: '',
+  // globals_path: '',
   
   vite_dev_server: {
     start_vite: true,
@@ -30,10 +30,17 @@ module.exports = {
     enabled: true
   },
 
+  page_objects_path: ['nightwatch/pages'],
   test_settings: {
+    // settings for the default test environment
     default: {
       disable_error_log: false,
-      launch_url: 'https://127.0.0.1:5000',
+      launch_url: '${UV_URL}',
+      // environment isolated global variables
+      globals: {
+        test_username: '${TEST_USER}',
+        test_password: '${TEST_PW}',
+      },
 
       screenshots: {
         enabled: false,
