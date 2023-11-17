@@ -1,8 +1,18 @@
 # ultraviolet-nightwatch
 
-## Install the package
+## Installation
 
-```console
+Align node versions:
+```sh
+nvm use
+```
+Activate yarn (if you haven't before)
+```sh
+corepack enable
+```
+
+Install packages for this project
+```sh
 yarn install
 ```
 
@@ -10,7 +20,10 @@ yarn install
 
 ## Getting started
 
-First, please ensure you have an instance of UltraViolet running (https://127.0.0.1:5000/). Once the instance is ready, you can run all or individual tests.
+- First, please ensure you have an instance of UltraViolet running (https://127.0.0.1:5000/). 
+- Copy the contents of `.env.example` into a new file called `.env` - `cp .env.example .env`
+- Replace the empty environment variables with the credentials that match your UV instance.
+- Run nightwatch tests.
 
 ### To run all the tests in the repository
 
