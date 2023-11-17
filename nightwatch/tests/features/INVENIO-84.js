@@ -14,16 +14,15 @@ describe('INVENIO-84', function() {
 
 
   it('Has a second alert message in the file upload section warning about file size', function(browser) {
-    const searchText = "Contact the NYU Libraries UltraViolet service team at uv@nyu.edu if you have more than 100 files or 50GB."
+    const searchText = `Contact the NYU Libraries UltraViolet service team at uv@nyu.edu if you have more than 100 files or 50GB.`
 
     browser.page.upload().element.findAll('@fileUploadAlertMessages').nth(1).assert.visible();
     browser.page.upload().element.findAll('@fileUploadAlertMessages').nth(1).find("p").assert.visible();
-    browser.element.findAll('div.ui.visible.warning.message').nth(1).assert.hasDescendants();
-    browser.element.findAll('div.ui.visible.warning.message').nth(1).find('p').assert.textContains("100 files");
-    // browser.assert.textContains("div.ui.visible.warning.message::nth(1) p", "100 files");
-    // browser.page.upload().element.findAll('@fileUploadAlertMessages').nth(1).assert.containsText('.mainline-results', 'Nightwatch.js')
-    // browser.page.upload().element.findByText(searchText).assert.visible();
-    // browser.page.upload().element.findByText('100 files').assert.visible();
+    const secondElement = element({
+      selector: '.file-upload-note .ui.visible.warning.message',
+      index: 1,
+    })
+    expect(secondElement).text.to.contain(searchText)
   })
 
   after(browser => browser.end())
