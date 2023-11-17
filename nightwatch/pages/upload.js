@@ -5,7 +5,6 @@ module.exports = {
           selector: "#deposit-form div.page-subheader-element:nth-last-child(2)"
         },
         'fileUploadAlertMessages': {
-          // selector: "div.ui.visible.warning.message"
           selector: ".file-upload-note .ui.visible.warning.message"
         },
     },
